@@ -1,7 +1,7 @@
 # Lattice Take Home Exercise
 
-![alt text](https://ibb.co/pdQQs5d)
-![alt text](https://ibb.co/ScDjHHz)
+![Uploading Screen Shot 2019-04-10 at 4.42.58 PM.png…]()
+![Uploading Screen Shot 2019-04-10 at 4.43.09 PM.png…]()
 
 ## How to start application
 1. Include ***.env*** file to project directory and define api key. ***TMDb_API=XXXXXXXXXXXXXXX***. Get your API key here(https://developers.themoviedb.org/3/getting-started/introduction).
