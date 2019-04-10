@@ -1,0 +1,45 @@
+{
+  "name": "latticetakehome",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon server",
+    "webpack-watch": "webpack --watch",
+    "test": "mocha ./routes/apiRouter-test.js --timeout 10000"
+  },
+  "dependencies": {
+    "async-waterfall": "^0.1.5",
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^7.0.0",
+    "ejs": "~2.5.7",
+    "express": "~4.15.5",
+    "moment": "^2.24.0",
+    "morgan": "~1.9.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-paginate": "^6.3.0",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
+    "react-spinners": "^0.5.4",
+    "redis": "^2.8.0",
+    "redux": "^4.0.1",
+    "response-time": "^2.3.2",
+    "save": "^2.3.3",
+    "serve-favicon": "~2.4.5",
+    "webpack": "^4.29.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "mocha": "^6.1.2",
+    "webpack-cli": "^3.3.0"
+  }
+}
