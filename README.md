@@ -24,7 +24,7 @@
     - Add filtering by genre.
     - Show related movies.
     - Add a page for individual actor details.
-    - ** Include pagination (note - themoviedb api returns total number of pages, but has a difficult time fetching movies for  higher number pages. Stick with single and double digit pagination numbers for best experience. ) **
-- [x] 2. Add a caching layer for your requests to the 3rd party API.(I have implemented caching layer in ./routes/apiRouter.js using redis).
+    - Include pagination ***(note - themoviedb api returns total number of pages, but has a difficult time fetching movies for  higher number pages. Stick with single and double digit pagination numbers for best experience).***
+- [x] 2. Add a caching layer for your requests to the 3rd party API.(***Implemented caching layer in ./routes/apiRouter.js using redis***).
 - [x] 3. This not a design exercise, but UX polish that demonstrates your mastery of your frontend tool set is encouraged.
-- [x] 4. Add unit testing for your API(./routes/apiRouter-test.js).
+- [x] 4. Add unit testing for your API(***./routes/apiRouter-test.js***).
