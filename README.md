@@ -13,6 +13,12 @@
 4. Start application - ***npm start*** and go to ***http://localhost:3000***.
 5. Run test(./routes/apiRouter-test.js) - ***npm run test***
 
+## Minimum Feature Set
+
+- [x] 1. When first loaded, the user should see a list of the most [popular movies](https://developers.themoviedb.org/3/movies/get-popular-movies) and a search bar.
+- [x] 2. A user should be able to [search](https://developers.themoviedb.org/3/search/search-movies) for a movie by title in the search bar, and the matching results should show up in the list of movies.
+- [x] 3. A user can click on a [movie](https://developers.themoviedb.org/3/movies) in the list and be taken to a page that displays more details for the movie (title, movie poster, release date, cast, synopsis, etc)
+
 
 ## Technical Requirements
 - [x] 1. Using Node.js, create a backend application that accepts requests to power the features above. This app should query the Movie DB API and return the results to the user.
