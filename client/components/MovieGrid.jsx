@@ -14,8 +14,7 @@ class MovieGrid extends Component {
     this.state = {
       movies: [],
       currentPage: undefined,
-      totalPages: undefined,
-      error: {}
+      totalPages: undefined
     };
     this.renderMovieGridItems = this.renderMovieGridItems.bind(this);
     this.goToMovieDetail = this.goToMovieDetail.bind(this);
@@ -29,9 +28,6 @@ class MovieGrid extends Component {
     } else if (pathname.slice(0, 16) === '/movies/popular/') {
       let pageNumber = pathname.replace(/\D/g, '');
       this.fetchPopularMovies(pageNumber);
-      this.setState({
-        currentPage: pageNumber
-      });
     } else if (pathname === '/movies/search/') {
       this.fetchMovies(decodeURI(search));
     }
@@ -44,11 +40,7 @@ class MovieGrid extends Component {
         this.fetchPopularMovies(1);
       } else if (pathname.slice(0, 16) === '/movies/popular/') {
         let pageNumber = pathname.replace(/\D/g, '');
-        this.setState({
-          currentPage: pageNumber
-        }, () => {
-          this.fetchPopularMovies(pageNumber);
-        });
+        this.fetchPopularMovies(pageNumber);
       } else if (pathname === '/movies/search/') {
         this.fetchMovies(decodeURI(search));
       }
@@ -76,7 +68,8 @@ class MovieGrid extends Component {
       this.setState({
         movies,
         currentPage,
-        totalPages
+        totalPages,
+        currentPage
       }, () => {
         this.props.toggleSpinner();
       });
@@ -134,7 +127,7 @@ class MovieGrid extends Component {
 
     return (
       <div>
-        <div className="video-grid">{hasMovies ? this.renderMovieGridItems(movies) : null}</div>
+        <div className="video-grid">{ hasMovies ? this.renderMovieGridItems(movies) : null }</div>
         {
           hasMovies ? 
           <ReactPaginate

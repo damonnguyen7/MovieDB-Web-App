@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { createStore, compose } from 'redux';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import MovieGrid from './MovieGrid';
@@ -14,7 +12,6 @@ class App extends Component {
     super(props);
   }
   render() {
-    let movies = this.props.movies;
     return (
       <div>
         <Router>

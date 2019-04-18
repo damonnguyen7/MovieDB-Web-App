@@ -4,16 +4,16 @@ class TrailerPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTrailerKey: undefined
+      selectedTrailerKey: undefined
     };
     this.renderTrailerPagination = this.renderTrailerPagination.bind(this);
     this.changeTrailer = this.changeTrailer.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.trailers && props.trailers.length > 0 && state.currentTrailerKey === undefined) {
+    if (props.trailers && props.trailers.length > 0 && state.selectedTrailerKey === undefined) {
       return {
-        currentTrailerKey: props.trailers[0].key
+        selectedTrailerKey: props.trailers[0].key
       };
     }
     return null;
@@ -27,20 +27,15 @@ class TrailerPlayer extends Component {
     return trailers.slice(0,6).map((trailer) => {
       return (
         <div key={trailer.id}>
-          <i 
-            onClick={() => this.changeTrailer(trailer.key)} 
-            className={unSelectedClasses}
-          >
-            brightness_1
-          </i>
+          <i onClick={() => this.changeTrailer(trailer.key)} className={unSelectedClasses}> brightness_1 </i>
         </div>
       );
     });
   }
 
-  changeTrailer(currentTrailerKey) {
+  changeTrailer(selectedTrailerKey) {
     this.setState({
-      currentTrailerKey: currentTrailerKey
+      selectedTrailerKey
     });
   }
 
@@ -56,7 +51,7 @@ class TrailerPlayer extends Component {
               className="youtube-iframe"
               width="560" 
               height="315" 
-              src={`https://www.youtube.com/embed/${this.state.currentTrailerKey}`}
+              src={`https://www.youtube.com/embed/${this.state.selectedTrailerKey}`}
               frameBorder="0" 
               allow="autoplay; encrypted-media" 
               allowFullScreen

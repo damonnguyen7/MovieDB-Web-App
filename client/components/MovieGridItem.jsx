@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import moment from 'moment';
 
 class MovieGridItem extends Component {
@@ -53,8 +52,4 @@ class MovieGridItem extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {};
-};
-
-export default connect(mapStateToProps, {})(MovieGridItem);
+export default MovieGridItem;
