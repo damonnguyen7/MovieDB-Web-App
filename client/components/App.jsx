@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import MovieGrid from './MovieGrid';
 import MovieDetail from './MovieDetail';
 import NavigationBar from './NavigationBar';
-import { toggleSpinner } from '../actions/index';
 
 class App extends Component {
   constructor(props) {
     super(props);
   }
+
   render() {
     return (
       <div>
@@ -22,12 +22,6 @@ class App extends Component {
       </div>
     );
   }
-}
-
-const mapStateToProps = (state) => {
-  return {};
 };
 
-export default connect(mapStateToProps, {
-  toggleSpinner
-})(App);
+export default App;

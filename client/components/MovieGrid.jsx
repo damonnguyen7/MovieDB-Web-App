@@ -2,9 +2,9 @@ import 'babel-polyfill';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-import ReactPaginate from 'react-paginate';
 
 import MovieGridItem from './MovieGridItem';
+import Pagination from './Pagination'
 import { toggleSpinner } from '../actions/index';
 
 
@@ -18,7 +18,7 @@ class MovieGrid extends Component {
     };
     this.renderMovieGridItems = this.renderMovieGridItems.bind(this);
     this.goToMovieDetail = this.goToMovieDetail.bind(this);
-    this.handlePageClick = this.handlePageClick.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   componentDidMount(){
@@ -47,7 +47,7 @@ class MovieGrid extends Component {
     }
   }
 
-  handlePageClick(data) {
+  handlePageChange(data) {
     const selectedPage = data.selected + 1;
     const { pathname, search } = this.props.location;
     if (pathname === '/' || pathname.slice(0, 16) === '/movies/popular/') {
@@ -126,24 +126,15 @@ class MovieGrid extends Component {
     let hasMovies = movies.length > 0;
 
     return (
-      <div>
-        <div className="video-grid">{ hasMovies ? this.renderMovieGridItems(movies) : null }</div>
+      <div id="video-grid">
+        <div className="video-grid-container">{ hasMovies ? this.renderMovieGridItems(movies) : null }</div>
         {
-          hasMovies ? 
-          <ReactPaginate
-            previousLabel={this.state.currentPage !== 1 ? 'PREVIOUS' : null}
-            nextLabel={'NEXT'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={this.state.totalPages}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={this.handlePageClick}
-            containerClassName={'pagination'}
-            subContainerClassName={'pages pagination'}
-            activeClassName={'active'}
-            forcePage={this.state.currentPage - 1}
-          /> : null
+          !hasMovies ? null :
+          <Pagination 
+            currentPage={this.state.currentPage} 
+            totalPages={this.state.totalPages} 
+            handlePageChange={this.handlePageChange} 
+          />
         }
       </div>
     );
@@ -151,10 +142,7 @@ class MovieGrid extends Component {
 };
 
 const mapStateToProps = (state) => {
-  const { displaySpinner } = state.appReducer;
-  return {
-    displaySpinner
-  };
+  return {};
 };
 
 export default connect(mapStateToProps, {
