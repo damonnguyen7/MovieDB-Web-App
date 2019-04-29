@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import SearchByTitleForm from './SearchByTitleForm';
+import HomeButton from './HomeButton';
 import LoadingBar from './LoadingBar';
 
 class NavigationBar extends Component {
@@ -34,10 +35,11 @@ class NavigationBar extends Component {
     return (
       <nav id="nav-bar">
         <div id="nav-bar-component-1">
-          <div className="md-back-btn-icon-container">
-            { this.props.location.pathname.slice(0,7) === '/movie/' ? <i className="material-icons md-back-btn-icon" onClick={this.goBack}>keyboard_backspace</i> : null }
-            { this.props.location.pathname === '/' || this.props.location.pathname.slice(0, 7) === '/movies' ? <i className="material-icons md-home-btn-icon" onClick={this.goHome}>home</i> : null }
-          </div>
+          <HomeButton 
+            currentPath={this.props.location.pathname} 
+            goHome={this.goHome} 
+            goBack={this.goBack} 
+          />
           <SearchByTitleForm updateUrl={this.updateUrl} />
         </div>
         <LoadingBar isLoading={isLoading} />

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { css } from '@emotion/core';
 import BarLoader from 'react-spinners/BarLoader';
@@ -25,6 +26,10 @@ class LoadingBar extends Component {
       />
     );
   }
+};
+
+LoadingBar.propTypes = {
+  isLoading: PropTypes.bool
 };
 
 export default LoadingBar;

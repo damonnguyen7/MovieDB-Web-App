@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import moment from 'moment';
@@ -118,6 +119,10 @@ class MovieDetail extends Component {
       </div>
     );
   }
+};
+
+MovieDetail.propTypes = {
+  isLoading: PropTypes.bool
 };
 
 const mapStateToProps = (state) => {
