@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import SearchByTitleForm from './SearchByTitleForm';
 import HomeButton from './HomeButton';
 import LoadingBar from './LoadingBar';
 
 class NavigationBar extends Component {
-  constructor(props) {
-    super(props);
-    this.updateUrl = this.updateUrl.bind(this);
-    this.goHome = this.goHome.bind(this);
-    this.goBack = this.goBack.bind(this);
-  }
 
-  updateUrl(endpoint) {
+  static = {
+    isLoading: PropTypes.bool.isRequired
+  };
+
+  updateUrl = (endpoint) => {
     if (endpoint.length > 0) {
       this.props.history.push(`/movies/search/?search=${endpoint}&page=1`); 
     } else {
@@ -21,22 +20,22 @@ class NavigationBar extends Component {
     }
   }
 
-  goHome() {
+  goHome = () => {
     this.props.history.push(`/`);
   }
 
-  goBack() {
+  goBack = () => {
     this.props.history.goBack();
   }
 
   render() {
-    const isLoading = this.props.displaySpinner;
+    const { isLoading, location } = this.props;
 
     return (
       <nav id="nav-bar">
         <div id="nav-bar-component-1">
           <HomeButton 
-            currentPath={this.props.location.pathname} 
+            currentPath={location.pathname} 
             goHome={this.goHome} 
             goBack={this.goBack} 
           />
@@ -51,7 +50,7 @@ class NavigationBar extends Component {
 const mapStateToProps = (state) => {
   const { displaySpinner } = state.appReducer;
   return {
-    displaySpinner
+    isLoading: displaySpinner
   };
 };
 

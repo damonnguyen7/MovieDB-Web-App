@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { toggleSpinner } from '../actions/index';
 
 class SearchByTitleForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchQuery: ''
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearInputField = this.clearInputField.bind(this);
+
+  state = {
+    searchQuery: ''
   }
 
-  handleChange(e) {
+  static propTypes = {
+    updateUrl: PropTypes.func.isRequired
+  }
+
+  handleChange = (e) => {
     this.setState({
       searchQuery: e.target.value
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     let searchQuery = this.state.searchQuery;
     this.props.updateUrl(searchQuery);
   }
 
-  clearInputField() {
+  clearInputField = () => {
     this.setState({searchQuery: ''});
   }
 

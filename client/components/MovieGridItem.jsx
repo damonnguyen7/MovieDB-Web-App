@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import moment from 'moment';
 
 class MovieGridItem extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      redirect: false
-    };
-    this.goToDetailPage = this.goToDetailPage.bind(this);
+
+  static propType = {
+    id: PropTypes.number,
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    title: PropTypes.string,
+    vote_average: PropTypes.number
   }
 
   async fetchMoviesBySearch(movieId) {
@@ -16,27 +19,18 @@ class MovieGridItem extends Component {
     this.setState({movie});
   }
 
-  goToDetailPage() {
+  goToDetailPage = () => {
     const { id } = this.props.movie;
     this.props.goToMovieDetail(id);
   }
 
   render() {
     const {
-      adult,
-      backdrop_path,
-      genre_ids,
       id,
-      original_language,
-      original_title,
-      overview,
-      popularity,
       poster_path,
       release_date,
       title,
-      video,
-      vote_average,
-      vote_count
+      vote_average
     } = this.props.movie;
 
     const backgroundImage = `https://image.tmdb.org/t/p/w780/${poster_path}`;

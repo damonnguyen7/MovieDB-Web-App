@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class TrailerPlayer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTrailerKey: undefined
-    };
-    this.renderTrailerPagination = this.renderTrailerPagination.bind(this);
-    this.changeTrailer = this.changeTrailer.bind(this);
+
+  state = {
+    selectedTrailerKey: undefined
+  }
+
+  static propTypes = {
+    trailers: PropTypes.array
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -19,7 +20,7 @@ class TrailerPlayer extends Component {
     return null;
   }
 
-  renderTrailerPagination() {
+  renderTrailerPagination = () => {
     const { trailers } = this.props;
     let selectedClassess = "material-icons trailer-toggle-btn ttbtn-selected";
     let unSelectedClasses = "material-icons trailer-toggle-btn";
@@ -33,7 +34,7 @@ class TrailerPlayer extends Component {
     });
   }
 
-  changeTrailer(selectedTrailerKey) {
+  changeTrailer = (selectedTrailerKey) => {
     this.setState({
       selectedTrailerKey
     });

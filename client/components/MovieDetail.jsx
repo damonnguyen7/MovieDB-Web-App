@@ -12,7 +12,7 @@ class MovieDetail extends Component {
     movieDetail: {}
   }
 
-  propTypes = {
+  static propTypes = {
     isLoading: PropTypes.bool.isRequired
   }
 

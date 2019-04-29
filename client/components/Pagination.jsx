@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 
 /**
@@ -7,16 +8,18 @@ import ReactPaginate from 'react-paginate';
  */
 
 class Pagination extends Component {
-  constructor(props) {
-    super(props);
-    this.handlePageChange = this.handlePageChange.bind(this);
+
+  static propType = {
+    currentPage: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired
   }
 
-  handlePageChange(data) {
+  handlePageChange = (data) => {
     this.props.handlePageChange(data);
   }
 
   render() {
+    const { currentPage, totalPages } = this.props;
 
     const forwardIcon = <i className="material-icons" style={{fontSize: 16}}>arrow_forward_ios</i>;
     const backwardIcon = <i className="material-icons" style={{fontSize: 16}}>arrow_back_ios</i>;

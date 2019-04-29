@@ -9,16 +9,10 @@ import { toggleSpinner } from '../actions/index';
 
 
 class MovieGrid extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movies: [],
-      currentPage: undefined,
-      totalPages: undefined
-    };
-    this.renderMovieGridItems = this.renderMovieGridItems.bind(this);
-    this.goToMovieDetail = this.goToMovieDetail.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
+  state = {
+    movies: [],
+    currentPage: undefined,
+    totalPages: undefined
   }
 
   componentDidMount(){
@@ -47,7 +41,7 @@ class MovieGrid extends Component {
     }
   }
 
-  handlePageChange(data) {
+  handlePageChange = (data) => {
     const selectedPage = data.selected + 1;
     const { pathname, search } = this.props.location;
     if (pathname === '/' || pathname.slice(0, 16) === '/movies/popular/') {
@@ -108,11 +102,11 @@ class MovieGrid extends Component {
     }
   }
 
-  goToMovieDetail(movieId) {
+  goToMovieDetail = (movieId) => {
     this.props.history.push(`/movie/${movieId}`); 
   }
 
-  renderMovieGridItems(movies) {
+  renderMovieGridItems = (movies) => {
     return movies.map((movie) => {
       let id = movie.id;
       return (
