@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import MovieGrid from './MovieGrid';
+import MovieGridContainer from './MovieGridContainer';
 import MovieDetail from './MovieDetail';
-import NavigationBar from './NavigationBar';
+import NavigationBarContainer from './NavigationBarContainer';
 
 function App() {
   return (
-    <div>
+    <Fragment>
       <Router>
-        <Route path={["/", "/movies/search", "/movie/:movieId", "/movies/popular/:pageNumber"]} exact component={NavigationBar} />
-        <Route path={["/", "/movies/search", "/movies/popular/:pageNumber"]} exact component={MovieGrid} />
+        <Route path={["/", "/movies/search", "/movie/:movieId", "/movies/popular/:pageNumber"]} exact component={NavigationBarContainer} />
+        <Route path={["/", "/movies/search", "/movies/popular/:pageNumber"]} exact component={MovieGridContainer} />
         <Route path="/movie/:movieId" exact component={MovieDetail} />
       </Router>
-    </div>
+    </Fragment>
   );
 };
 

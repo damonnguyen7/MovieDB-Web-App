@@ -2,42 +2,35 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 
-/**
- * @constructs Pagination
- * @props - currentPage {Number}, totalPages {Number}, handlePageChange{Function}
- */
-
 class Pagination extends Component {
 
   static propType = {
     currentPage: PropTypes.number.isRequired,
-    currentPage: PropTypes.number.isRequired
-  }
-
-  handlePageChange = (data) => {
-    this.props.handlePageChange(data);
+    currentPage: PropTypes.number.isRequired,
+    handlePageChange: PropTypes.func.isRequired,
+    totalPages: PropTypes.number.isRequired
   }
 
   render() {
-    const { currentPage, totalPages } = this.props;
+    const { currentPage, totalPages, handlePageChange } = this.props;
 
     const forwardIcon = <i className="material-icons" style={{fontSize: 16}}>arrow_forward_ios</i>;
     const backwardIcon = <i className="material-icons" style={{fontSize: 16}}>arrow_back_ios</i>;
 
     return (
       <ReactPaginate
-        previousLabel={this.props.currentPage !== 1 ? backwardIcon : null}
+        previousLabel={currentPage !== 1 ? backwardIcon : null}
         nextLabel={forwardIcon}
         breakLabel={'...'}
         breakClassName={'break-me'}
-        pageCount={this.props.totalPages}
-        marginPagesDisplayed={2}
+        pageCount={totalPages}
+        marginPagesDisplayed={null}
         pageRangeDisplayed={5}
-        onPageChange={this.handlePageChange}
+        onPageChange={handlePageChange}
         containerClassName={'pagination'}
         subContainerClassName={'pages pagination'}
         activeClassName={'active'}
-        forcePage={this.props.currentPage - 1}
+        forcePage={currentPage - 1}
       />
     );
   }

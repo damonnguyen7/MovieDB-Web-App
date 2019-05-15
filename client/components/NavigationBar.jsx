@@ -1,57 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import SearchByTitleForm from './SearchByTitleForm';
+import SearchByTitleFormContainer from './SearchByTitleFormContainer';
 import HomeButton from './HomeButton';
-import LoadingBar from './LoadingBar';
 
-class NavigationBar extends Component {
+const NavigationBar = ({location, goHome, goBack, history}) => (
+  <div id="nav-bar-component-1">
+    <HomeButton 
+      currentPath={location.pathname} 
+      goHome={goHome} 
+      goBack={goBack}
+    />
+    <SearchByTitleFormContainer history={history}  />
+  </div>
+);
 
-  static = {
-    isLoading: PropTypes.bool.isRequired
-  };
-
-  updateUrl = (endpoint) => {
-    if (endpoint.length > 0) {
-      this.props.history.push(`/movies/search/?search=${endpoint}&page=1`); 
-    } else {
-      this.props.history.push(`/`); 
-    }
-  }
-
-  goHome = () => {
-    this.props.history.push(`/`);
-  }
-
-  goBack = () => {
-    this.props.history.goBack();
-  }
-
-  render() {
-    const { isLoading, location } = this.props;
-
-    return (
-      <nav id="nav-bar">
-        <div id="nav-bar-component-1">
-          <HomeButton 
-            currentPath={location.pathname} 
-            goHome={this.goHome} 
-            goBack={this.goBack} 
-          />
-          <SearchByTitleForm updateUrl={this.updateUrl} />
-        </div>
-        <LoadingBar isLoading={isLoading} />
-      </nav>
-    );
-  }
+NavigationBar.propTypes = {
+  location: PropTypes.object.isRequired,
+  goHome: PropTypes.func.isRequired,
+  goBack: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => {
-  const { displaySpinner } = state.appReducer;
-  return {
-    isLoading: displaySpinner
-  };
-};
-
-export default connect(mapStateToProps, {})(NavigationBar);
+export default NavigationBar;
